@@ -16,7 +16,7 @@ def sort_files(source_dir, target_dir):
     logging.info('Sorting files...')
     for file in pathlib.Path(source_dir).iterdir():
         if file.is_dir():
-            thread = Thread(name=f"Thread for: {file.name}", target=sort_files, args=(file, target_dir))
+            thread = Thread(target=sort_files, args=(file, target_dir))
             thread.start()
 
         else:
